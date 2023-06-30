@@ -19,6 +19,15 @@ public class Article {
         return id;
     }
 
+    public Article() {
+    }
+
+    public Article(String title, String anons, String fullText) {
+        this.title = title;
+        this.anons = anons;
+        this.fullText = fullText;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
