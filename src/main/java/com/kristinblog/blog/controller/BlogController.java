@@ -34,6 +34,9 @@ public class BlogController {
 
     @GetMapping("/blog/{id}")
     public String blogDetails(@PathVariable(value="id") long articleId, Model model){
+        if(!articleRepository.existsById(articleId)){
+            return "redirect:/blog";
+        }
         Optional<Article> article = articleRepository.findById(articleId);
         ArrayList <Article> result = new ArrayList<>();
         article.ifPresent(result :: add);
@@ -42,12 +45,33 @@ public class BlogController {
     }
 
     @PostMapping("/blog/add")
-    public String blogPostAdd(@RequestPart String title, @RequestPart String anons, @RequestPart String full_text, Model model){
-        Article post = new Article(title, anons, full_text);
-        articleRepository.save(post);
+    public String blogArticleAdd(@RequestPart String title, @RequestPart String anons, @RequestPart String fullText, Model model){
+        Article article = new Article(title, anons, fullText);
+        articleRepository.save(article);
         return "redirect:/blog";
     }
 
+    @GetMapping("/blog/{id}/edit")
+    public String blogEdit(@PathVariable(value="id") long articleId, Model model){
+        if(!articleRepository.existsById(articleId)){
+            return "redirect:/blog";
+        }
+        Optional<Article> article = articleRepository.findById(articleId);
+        ArrayList <Article> result = new ArrayList<>();
+        article.ifPresent(result :: add);
+        model.addAttribute("article", result);
+        return "blog-edit";
+    }
+
+    @PostMapping("/blog/{id}/edit")
+    public String blogArticleUpdate(@PathVariable(value="id") long articleId, @RequestPart String title, @RequestPart String anons, @RequestPart String fullText, Model model){
+        Article article = articleRepository.findById(articleId).orElseThrow();
+        article.setTitle(title);
+        article.setTitle(anons);
+        article.setTitle(fullText);
+        articleRepository.save(article);
+        return "redirect:/blog";
+    }
 
 
 }
