@@ -15,6 +15,16 @@ public class Article {
     private String title, anons, fullText;
     private int views;
 
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    private String tag;
+
     public Long getId() {
         return id;
     }
@@ -22,10 +32,11 @@ public class Article {
     public Article() {
     }
 
-    public Article(String title, String anons, String fullText) {
+    public Article(String title, String anons, String fullText, String tag) {
         this.title = title;
         this.anons = anons;
         this.fullText = fullText;
+        this.tag = tag;
     }
 
     public void setId(Long id) {
