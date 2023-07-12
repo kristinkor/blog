@@ -82,7 +82,13 @@ public class BlogController {
 
     @PostMapping("filter")
     public String blogArticlesFilter(@RequestParam String filter, Map<String,Object> model){
-        List<Article> articles = articleRepository.findByTag(filter);
+        Iterable<Article> articles;
+        if(filter!=null && !filter.isEmpty()){
+            articles= articleRepository.findByTag(filter);
+        }else {
+            articles = articleRepository.findAll();
+        }
+
         model.put("articles", articles);
         return "blog-main";
     }

@@ -12,7 +12,7 @@ import java.util.Map;
 public class MainController {
 
     @GetMapping("/")
-    public String home(@RequestParam(name="", required = false, defaultValue = "Explorer") String name, Map<String, Object> model) {
+    public String home(@RequestParam(name="name", required = false, defaultValue = "Explorer") String name, Map<String, Object> model) {
         model.put("title", "Main page");
         model.put( "name",name);
         return "home";
