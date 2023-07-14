@@ -1,15 +1,18 @@
 package com.kristinblog.blog.controller;
 
 import com.kristinblog.blog.models.Article;
+import com.kristinblog.blog.models.User;
 import com.kristinblog.blog.repo.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -24,11 +27,21 @@ public class BlogController {
         model.addAttribute("articles", articles);
         return "blog-main";
     }
+
     @GetMapping("/blog/add")
     public String blogAdd(Model model){
         Iterable<Article> articles = articleRepository.findAll();
         model.addAttribute("articles", articles);
         return "blog-add";
+    }
+
+    @PostMapping("/blog/add")
+    public String blogArticleAdd(@AuthenticationPrincipal User user, @RequestParam String title, @RequestParam String anons, @RequestParam String fullText, @RequestParam String tag, Map<String, Object> model){
+        Article article = new Article(title, anons, fullText, tag, user);
+        articleRepository.save(article);
+        Iterable<Article> articles = articleRepository.findAll();
+        model.put("articles", articles);
+        return "redirect:/blog";
     }
 
     @GetMapping("/blog/{id}")
@@ -43,12 +56,6 @@ public class BlogController {
         return "blog-details";
     }
 
-    @PostMapping("/blog/add")
-    public String blogArticleAdd(@RequestParam String title, @RequestParam String anons, @RequestParam String fullText, @RequestParam String tag, Model model){
-        Article article = new Article(title, anons, fullText, tag);
-        articleRepository.save(article);
-        return "redirect:/blog";
-    }
 
     @GetMapping("/blog/{id}/edit")
     public String blogEdit(@PathVariable(value="id") long articleId, Model model){

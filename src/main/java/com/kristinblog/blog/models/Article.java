@@ -1,9 +1,6 @@
 package com.kristinblog.blog.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Article {
@@ -12,8 +9,23 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String title, anons, fullText;
+    private String title, anons, fullText, tag;
     private int views;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User author;
+
+    public String getAuthorName(){
+        return author != null ? author.getUsername() : "No author";
+    }
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
 
     public String getTag() {
         return tag;
@@ -23,7 +35,6 @@ public class Article {
         this.tag = tag;
     }
 
-    private String tag;
 
     public Long getId() {
         return id;
@@ -32,11 +43,12 @@ public class Article {
     public Article() {
     }
 
-    public Article(String title, String anons, String fullText, String tag) {
+    public Article(String title, String anons, String fullText, String tag, User user) {
         this.title = title;
         this.anons = anons;
         this.fullText = fullText;
         this.tag = tag;
+        this.author = user;
     }
 
     public void setId(Long id) {
