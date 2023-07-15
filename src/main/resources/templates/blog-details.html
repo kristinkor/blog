@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header>
+    <div th:insert="blocks/header :: header"></div>
+</header>
+
+<div class="container mt-5">
+    <div th:each="el : ${article}" class="alert alert-info mt-2">
+        <h1 th:text="${el.title}"></h1>
+        <p th:text="${el.fullText}"></p>
+
+        <p><b>Views: </b><span th:text="${el.views}"></span></p>
+        <strong th:text="${el.authorName}"></strong>
+        <a th:href="@{/blog/{id}/edit(id=${el.id})}" class="btn btn-warning">Edit</a>
+        <form th:action="@{/blog/{id}/remove(id=${el.id})}" method="post">
+            <button class="btn btn-warning" type="submit">Delete</button>
+        </form>
+    </div>
+</div>
+<footer>
+    <div th:insert="blocks/footer :: footer"></div>
+</footer>
+</body>
+</html>
