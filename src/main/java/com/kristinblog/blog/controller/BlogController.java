@@ -22,21 +22,27 @@ public class BlogController {
     private ArticleRepository articleRepository;
 
     @GetMapping("/blog")
-    public String blogMain(Model model){
+    public String blogMain(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
         Iterable<Article> articles = articleRepository.findAll();
+        if (filter != null && !filter.isEmpty()) {
+            articles = articleRepository.findByTag(filter);
+        } else {
+            articles = articleRepository.findAll();
+        }
         model.addAttribute("articles", articles);
+        model.addAttribute("filter", filter);
         return "blog-main";
     }
 
     @GetMapping("/blog/add")
-    public String blogAdd(Model model){
+    public String blogAdd(Model model) {
         Iterable<Article> articles = articleRepository.findAll();
         model.addAttribute("articles", articles);
         return "blog-add";
     }
 
     @PostMapping("/blog/add")
-    public String blogArticleAdd(@AuthenticationPrincipal User user, @RequestParam String title, @RequestParam String anons, @RequestParam String fullText, @RequestParam String tag, Map<String, Object> model){
+    public String blogArticleAdd(@AuthenticationPrincipal User user, @RequestParam String title, @RequestParam String anons, @RequestParam String fullText, @RequestParam String tag, Map<String, Object> model) {
         Article article = new Article(title, anons, fullText, tag, user);
         articleRepository.save(article);
         Iterable<Article> articles = articleRepository.findAll();
@@ -45,32 +51,32 @@ public class BlogController {
     }
 
     @GetMapping("/blog/{id}")
-    public String blogDetails(@PathVariable(value="id") long articleId, Model model){
-        if(!articleRepository.existsById(articleId)){
+    public String blogDetails(@PathVariable(value = "id") long articleId, Model model) {
+        if (!articleRepository.existsById(articleId)) {
             return "redirect:/blog";
         }
         Optional<Article> article = articleRepository.findById(articleId);
-        ArrayList <Article> result = new ArrayList<>();
-        article.ifPresent(result :: add);
+        ArrayList<Article> result = new ArrayList<>();
+        article.ifPresent(result::add);
         model.addAttribute("article", result);
         return "blog-details";
     }
 
 
     @GetMapping("/blog/{id}/edit")
-    public String blogEdit(@PathVariable(value="id") long articleId, Model model){
-        if(!articleRepository.existsById(articleId)){
+    public String blogEdit(@PathVariable(value = "id") long articleId, Model model) {
+        if (!articleRepository.existsById(articleId)) {
             return "redirect:/blog";
         }
         Optional<Article> article = articleRepository.findById(articleId);
-        ArrayList <Article> result = new ArrayList<>();
-        article.ifPresent(result :: add);
+        ArrayList<Article> result = new ArrayList<>();
+        article.ifPresent(result::add);
         model.addAttribute("article", result);
         return "blog-edit";
     }
 
     @PostMapping("/blog/{id}/edit")
-    public String blogArticleUpdate(@PathVariable(value="id") long articleId, @RequestParam String title, @RequestParam String anons, @RequestParam String fullText, @RequestParam String tag, Model model){
+    public String blogArticleUpdate(@PathVariable(value = "id") long articleId, @RequestParam String title, @RequestParam String anons, @RequestParam String fullText, @RequestParam String tag, Model model) {
         Article article = articleRepository.findById(articleId).orElseThrow();
         article.setTitle(title);
         article.setTitle(anons);
@@ -81,23 +87,10 @@ public class BlogController {
     }
 
     @PostMapping("/blog/{id}/remove")
-    public String blogArticleDelete(@PathVariable(value="id") long articleId, Model model){
+    public String blogArticleDelete(@PathVariable(value = "id") long articleId, Model model) {
         Article article = articleRepository.findById(articleId).orElseThrow();
         articleRepository.delete(article);
         return "redirect:/blog";
-    }
-
-    @PostMapping("filter")
-    public String blogArticlesFilter(@RequestParam String filter, Map<String,Object> model){
-        Iterable<Article> articles;
-        if(filter!=null && !filter.isEmpty()){
-            articles= articleRepository.findByTag(filter);
-        }else {
-            articles = articleRepository.findAll();
-        }
-
-        model.put("articles", articles);
-        return "blog-main";
     }
 
 }

@@ -12,10 +12,13 @@
 <div class="container mt-5">
     <h1>Blog</h1>
     <div>Find the article you need</div>
-    <form method="post" th:action="@{/filter}">
-        <input type="text" name="filter">
+    <form method="get" th:action="@{/blog}">
+        <input type="text" name="filter"  th:value="${filter}">
         <button type="submit" class="btn btn-warning">Find</button>
     </form>
+    <div th:if="${articles.empty}" class="alert alert-info mt-2">
+        <p>No articles</p>
+    </div>
     <div th:each="article : ${articles}" class="alert alert-info mt-2">
         <h3 th:text="${article.title}"></h3>
         <p th:text="${article.anons}"></p>
