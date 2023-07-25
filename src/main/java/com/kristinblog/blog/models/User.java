@@ -14,8 +14,11 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
+    @Column(nullable = false, unique = true)
     private String username;
+    @Column(nullable = false)
     private String firstName;
+    @Column(nullable = false)
     private String lastName;
     private String password;
     private boolean isActive;
@@ -23,6 +26,7 @@ public class User implements UserDetails {
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
     public Long getUserId() {
