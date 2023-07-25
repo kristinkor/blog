@@ -3,6 +3,19 @@
 
 }
 
+a {
+    text-decoration: none !important;
+    outline: none;
+    color: #161c2d;
+    font-family: "Inter",sans-serif;
+}
+
+.navbar .nav-btn {
+    color: #00bcd4;
+    border: 1px solid #eaf0f9;
+    background-color: #fff;
+}
+
 /* HEADER */
 .navbar .navbar-nav .nav-item .nav-link {
     font-size: 16px;
@@ -23,6 +36,11 @@
 .bg-primary, .btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-soft-primary:hover, .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active, .nav-sticky .nav-btn {
     background-color: #00bcd4 !important;
 }
+
+.navbar .nav-btn {
+    border: 1px solid rgba(0, 188, 212, 0.3);
+}
+
 
 
 /*RESUME*/

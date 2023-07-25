@@ -1,8 +1,23 @@
-<div class="container" th:fragment="footer">
-    <p class="float-end mb-1">
-        <a href="#">Back to top</a>
-    </p>
-    <p class="mb-1">Album example is © Bootstrap, but please download and customize it for yourself!</p>
-    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a
-            href="/docs/5.2/getting-started/introduction/">getting started guide</a>.</p>
+<div class="footer-alt" th:fragment="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <p> ©
+                    <script>
+                            document.write(new Date().getFullYear())
+
+                    </script>
+                    2023 Selfown. Created with <i class="las la-heart text-danger"></i> by Kristina Korzhenevskaya
+                </p>
+            </div>
+            <div class="col-sm-6 text-sm-end">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item"><a href="#">- Terms &amp; condition<sup class="text-danger">*</sup></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
 </div>
