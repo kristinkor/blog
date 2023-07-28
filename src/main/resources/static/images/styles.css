@@ -29,6 +29,12 @@ a {
     box-shadow: 0px 4px 20px rgba(191,197,213,0.07);
 }
 
+.nav-sticky .nav-btn {
+    color: #fff !important;
+    border: 1px solid #00bcd4;
+    background-color: #00bcd4;
+}
+
 .btn-primary, .btn-outline-primary, .nav-sticky .nav-btn {
     border: 1px solid #00bcd4 !important;
 }
@@ -41,6 +47,9 @@ a {
     border: 1px solid rgba(0, 188, 212, 0.3);
 }
 
+.navbar a.hire-btn {
+ color: #324686;
+}
 
 
 /*RESUME*/
@@ -66,9 +75,38 @@ mark {
     animation-delay: 1s;
 }
 
+.personal-detail-title {
+    width: 168px;
+    float: left;
+    font-weight: 500;
+    padding-right: 10px;
+    position: relative;
+    display: block;
+    font-size: 16px;
+}
+
+.personal-detail-title:after {
+    content: ":";
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+
+/* SECTION */
+
+.bg-gradient-light-white {
+    background-image: linear-gradient(180deg, #f9fbfd 0, #fff);
+}
+
 .section {
     padding: 100px 0px 100px;
     position: relative;
+}
+
+.bg-soft-alt-success {
+    background-color: rgba(105,195,128,0.1);
+    color: #69c380;
 }
 
 .social i {
