@@ -22,6 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests((requests) -> requests
                         .antMatchers("/blog", "/registration", "/about").permitAll()
+                        .antMatchers("/css/**", "/js/**", "/images/**").permitAll() // Add this line
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
@@ -29,14 +30,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .permitAll()
                 )
                 .logout((logout) -> logout.permitAll());
-
-
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService)
-
                 .passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
 }
