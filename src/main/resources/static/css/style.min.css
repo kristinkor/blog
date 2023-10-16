@@ -1706,7 +1706,7 @@ hr.hr-dashed.hr-light {
 }
 
 .accordion .accordion-item .accordion-header .accordion-button:before {
-    content: "â”€";
+    content: "-";
     width: 20px;
     height: 20px;
     line-height: 20px;
@@ -1719,7 +1719,7 @@ hr.hr-dashed.hr-light {
 }
 
 .accordion .accordion-item .accordion-header .accordion-button.collapsed:before {
-    content: "âœ›";
+    content: "+";
     margin-right: 10px;
     width: 20px;
     height: 20px;

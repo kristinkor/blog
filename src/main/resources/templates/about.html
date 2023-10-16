@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<div th:replace="blocks/navbar::head"/>
+<div th:replace="fragments/fragments::head"/>
 <body>
-<div th:replace="blocks/navbar :: navbar"></div>
+<div th:replace="fragments/fragments :: navbar"></div>
 
 <section class="hero-one position-relative main-bg" alt="Abstract photo by Pawel Czerwinski. taken from Unsplash.com"
          id="home"
@@ -39,11 +39,21 @@
 
 <div th:replace="sections/resume :: resume"></div>
 <div th:replace="sections/project :: project"></div>
+<div th:replace="sections/education :: education"></div>
+<div th:replace="sections/contact-form :: contact"></div>
+
+
 <div th:replace="sections/blog :: blog"></div>
 
-<div th:include="blocks/navbar :: footer"></div>
-<span th:include="includes :: js"></span>
-<script type="text/javascript" th:src="@{/js/index.js}"></script>
+<div th:replace="fragments/fragments :: footerlg"></div>
+<div th:replace="fragments/fragments :: footersm"></div>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/feather.js"></script>
+<script src="js/shuffle.min.js"></script>
+<script src="js/projects.init.js"></script>
+<script src="js/typed.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 </html>
