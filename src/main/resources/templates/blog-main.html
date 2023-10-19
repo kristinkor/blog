@@ -1,30 +1,86 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Blog</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-</head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<div th:replace="fragments/fragments::head"></div>
 <body>
+<div th:replace="fragments/fragments :: navbar"></div>
 
-<div class="container mt-5">
-    <h1>Blog</h1>
-    <div>Find the article you need</div>
-    <form method="get" th:action="@{/blog}">
-        <input type="text" name="filter"  th:value="${filter}">
-        <button type="submit" class="btn btn-warning">Find</button>
-    </form>
-    <div th:if="${articles.empty}" class="alert alert-info mt-2">
-        <p>No articles</p>
-    </div>
-    <div th:each="article : ${articles}" class="alert alert-info mt-2">
-        <h3 th:text="${article.title}"></h3>
-        <p th:text="${article.anons}"></p>
-        <strong th:text="${article.authorName}"></strong>
-        <a th:href="@{/blog/{id}(id=${article.id})}" class="btn btn-warning">Read more...</a>
-    </div>
-</div>
+<section class="hero-one position-relative bg-black" id="about" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
+    <div class="container">
+        <div class="row  py-100 align-items-center justify-content-center">
 
-</footer>
+
+            <div class="col-lg-7 text-center py-5 text-center">
+
+                <h5 class="head-title py-4">My Blog</h5>
+                <p class="text-white">
+                    Find the article you need
+                </p>
+                <form method="get" th:action="@{/blog}">
+                    <input type="text" name="filter" th:value="${filter}">
+                    <button type="submit" class="btn btn-warning">Find</button>
+                </form>
+                <span class="wrap"></span>
+            </div><!--end col-->
+        </div><!--end row-->
+    </div><!-- end container -->
+</section>
+
+
+
+<section class="section">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-4 col-md-6"   th:each="article : ${articles}" >
+                <div th:if="${articles.empty}" class="alert alert-info mt-2">
+                    <p>No articles</p>
+                </div>
+<!--                <div th:each="article : ${articles}" class="alert alert-info mt-2">-->
+<!--                    <h3 th:text="${article.title}"></h3>-->
+<!--                    <p th:text="${article.anons}"></p>-->
+<!--                    <strong th:text="${article.authorName}"></strong>-->
+<!--                    <a th:href="@{/blog/{id}(id=${article.id})}" class="btn btn-warning">Read more...</a>-->
+<!--                </div>-->
+                <div class="card shadow  mb-4 mb-4">
+                    <img src="images/personal/1.jpg" alt="" class="img-fluid rounded-top">
+                    <div class="card-body">
+                        <a href="blog-detail.html" class="fs-20 my-0 d-block fw-medium"  th:text="${article.title}"></a>
+                        <hr class="hr-dashed">
+                        <div class="d-flex justify-content-between">
+                            <div class="meta-box">
+                                <div class="media">
+                                    <img src="images/users/user-7.jpg" alt="" class="thumb-sm rounded-circle me-2 align-self-center">
+                                    <div class="media-body align-self-center text-truncate">
+                                        <h6 class="m-0 fs-14" th:text="${article.authorName}"></h6>
+                                        <p th:text="${article.anons}"></p>
+                                        <p class="mb-0 fs-12 text-muted">14 Feb 2022</p>
+
+                                    </div><!--end media-body-->
+                                </div>
+                            </div><!--end meta-box-->
+                            <div class="align-self-center">
+                                <a href="blog-detail.html" class="fs-14" th:href="@{/blog/{id}(id=${article.id})}">Read more <i class="las la-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div><!--end col-->
+
+        </div><!-- end row -->
+
+    </div><!-- end container -->
+</section>
+
+<div th:replace="fragments/fragments :: footerlg"></div>
+<div th:replace="fragments/fragments :: footersm"></div>
+
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/feather.js"></script>
+<script src="/js/shuffle.min.js"></script>
+<script src="/js/projects.init.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/app.js"></script>
+
 </body>
 </html>
