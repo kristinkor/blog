@@ -1,6 +1,10 @@
 :root {
-  --main-text: #324686;
-
+/*#324686*/
+/*icons #8997bd*/
+/*#00bcd4*/
+  --main-text: #483286;
+  --violet: #8679B4;
+   --pink: #D400BC;
 }
 
 a {
@@ -11,7 +15,7 @@ a {
 }
 
 .navbar .nav-btn {
-    color: #00bcd4;
+    color: var(--pink);
     border: 1px solid #eaf0f9;
     background-color: #fff;
 }
@@ -19,7 +23,7 @@ a {
 /* HEADER */
 .navbar .navbar-nav .nav-item .nav-link {
     font-size: 16px;
-    color: #324686;
+    color: var(--main-text);
     padding-right: 26px;
 }
 
@@ -31,16 +35,16 @@ a {
 
 .nav-sticky .nav-btn {
     color: #fff !important;
-    border: 1px solid #00bcd4;
-    background-color: #00bcd4;
+    border: 1px solid var(--pink);
+    background-color: var(--pink);
 }
 
 .btn-primary, .btn-outline-primary, .nav-sticky .nav-btn {
-    border: 1px solid #00bcd4 !important;
+    border: 1px solid var(--pink) !important;
 }
 
 .bg-primary, .btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-soft-primary:hover, .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active, .nav-sticky .nav-btn {
-    background-color: #00bcd4 !important;
+    background-color:var(--pink) !important;
 }
 
 .navbar .nav-btn {
@@ -48,7 +52,7 @@ a {
 }
 
 .navbar a.hire-btn {
- color: #324686;
+ color: var(--main-text);
 }
 
 
@@ -113,8 +117,8 @@ color: red;}
 .social i {
     width: 36px;
     height: 36px;
-    border: 1px solid #8997bd;
-    color: #8997bd;
+    border: 1px solid var(--violet);
+    color: var(--violet);
     border-radius: 50%;
     justify-content: center;
     display: inline-flex;

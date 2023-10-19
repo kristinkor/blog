@@ -31,7 +31,7 @@ public class BlogController {
         }
         model.addAttribute("articles", articles);
         model.addAttribute("filter", filter);
-        return "about";
+        return "blog-main";
     }
 
     @GetMapping("/blog/add")
