@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <title>User editor</title>
-</head>
-<body>
-<!-- Include the common layout if needed -->
-<!-- <th:block th:include="parts/common :: page"> -->
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<h1>User editor</h1>
+<div th:replace="fragments/fragments::head"></div>
+<body>
+<div th:replace="fragments/fragments :: navbar"></div>
+<form action="/logout" method="post">
+  <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+  <input type="submit" value="Sign Out"/>
+</form>
+
+<section class="hero-one position-relative dark-bg" alt="Stars night photo by nic chi. taken from Unsplash.com"
+         id="home"
+         th:style="'background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(\'' + @{/images/dark-bg.jpg} + '\'); background-size: cover; background-position: center center;'">
+  <div class="container">
+    <div class="row  py-100 align-items-center justify-content-center">
+
+
+      <div class="col-lg-7 text-center py-5 text-center">
+
+        <h5 class="head-title py-4">User editor</h5>
+
+        <span class="wrap"></span>
+      </div><!--end col-->
+    </div><!--end row-->
+  </div><!-- end container -->
+</section>
+
 
 <form th:action="@{/user}" th:method="post">
   <input type="text" name="username" th:value="${user.username}">
@@ -27,7 +45,7 @@
   <button type="submit">Save</button>
 </form>
 
-<!-- Close the common layout if needed -->
-<!-- </th:block> -->
+<div th:replace="fragments/fragments :: footerlg"></div>
+<div th:replace="fragments/fragments :: footersm"></div>
 </body>
 </html>

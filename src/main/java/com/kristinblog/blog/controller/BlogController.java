@@ -47,13 +47,13 @@ public class BlogController {
         articleRepository.save(article);
         Iterable<Article> articles = articleRepository.findAll();
         model.put("articles", articles);
-        return "redirect:/blog";
+        return "redirect:/blog-main";
     }
 
     @GetMapping("/blog/{id}")
     public String blogDetails(@PathVariable(value = "id") long articleId, Model model) {
         if (!articleRepository.existsById(articleId)) {
-            return "redirect:/blog";
+            return "redirect:/blog-main";
         }
         Optional<Article> article = articleRepository.findById(articleId);
         ArrayList<Article> result = new ArrayList<>();
@@ -66,7 +66,7 @@ public class BlogController {
     @GetMapping("/blog/{id}/edit")
     public String blogEdit(@PathVariable(value = "id") long articleId, Model model) {
         if (!articleRepository.existsById(articleId)) {
-            return "redirect:/blog";
+            return "redirect:/blog-main";
         }
         Optional<Article> article = articleRepository.findById(articleId);
         ArrayList<Article> result = new ArrayList<>();
@@ -83,14 +83,14 @@ public class BlogController {
         article.setTag(tag);
         article.setTitle(fullText);
         articleRepository.save(article);
-        return "redirect:/blog";
+        return "redirect:/blog-main";
     }
 
     @PostMapping("/blog/{id}/remove")
     public String blogArticleDelete(@PathVariable(value = "id") long articleId, Model model) {
         Article article = articleRepository.findById(articleId).orElseThrow();
         articleRepository.delete(article);
-        return "redirect:/blog";
+        return "redirect:/blog-main";
     }
 
 }

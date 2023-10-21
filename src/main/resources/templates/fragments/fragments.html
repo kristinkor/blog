@@ -13,13 +13,13 @@
     <link th:href="@{/css/bootstrap.min.css}" href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link th:href="@{/css/style.min.css}" href="/css/style.min.css" rel="stylesheet" type="text/css">
     <link th:href="@{/css/colors/default.css}" href="/css/colors/default.css" rel="stylesheet" type="text/css" id="color-opt">
-    <title>Kristina Korzhenevskaya - Software Developer | Web Development Portfolio</title>
+    <title th:text="${title}">Kristina Korzhenevskaya - Software Developer | Web Development Portfolio</title>
 </head>
 <body>
 <div th:fragment="navbar">
     <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
         <div class="container">
-            <a href="/about" class="navbar-brand" aria-label="Home">
+            <a href="/" class="navbar-brand" aria-label="Home">
                 <svg height="40" viewBox="0 0 370 70.00159014353777" class="css-1j8o68f" alt="Logo">
                         <defs id="SvgjsDefs3441"></defs>
                         <g id="SvgjsG3442" featurekey="symbolFeature-0"
@@ -65,9 +65,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/blog" aria-label="Blogs">Blogs</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/blog/add" aria-label="Add article">Add article</a>
-                    </li>
+
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="/blog/add" aria-label="Add article">Add article</a>-->
+<!--                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="/contact" aria-label="Contact me">Contact me</a>
                     </li>
@@ -116,7 +117,7 @@
                 </p>
                 <ul class="list-unstyled footer-social mb-0 mt-sm-0 mt-3">
                     <li class="list-inline-item">
-                        <a href="#">
+                        <a href="https://www.facebook.com/jabuduzhit">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                  stroke-linejoin="round" class="feather feather-facebook icon-xs">
@@ -125,7 +126,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="#">
+                        <a href="https://twitter.com/airboltik_en">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                  stroke-linejoin="round" class="feather feather-twitter icon-xs">
@@ -134,7 +135,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="#">
+                        <a href="https://github.com/kristinkor">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                  stroke-linejoin="round" class="feather feather-github icon-xs">
@@ -143,7 +144,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="#">
+                        <a href="https://instagram.com/krist.kor">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                  stroke-linejoin="round" class="feather feather-instagram icon-xs">
@@ -161,7 +162,7 @@
                     <div class="col-md-4">
                         <h6 class="text-footer mb-4 mt-sm-0 mt-4">Information</h6>
                         <ul class="list-unstyled footer-list">
-                            <li><a href="#resume">Resume</a></li>
+                            <li><a href="/resume.html">Resume</a></li>
                             <li><a href="#projects">Projects</a></li>
 
                         </ul>

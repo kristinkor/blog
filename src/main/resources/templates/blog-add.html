@@ -8,8 +8,26 @@
     <input type="hidden" name="_csrf" th:value="${_csrf.token}">
     <input type="submit" value="Sign Out"/>
 </form>
+
+<section class="hero-one position-relative dark-bg" alt="Stars night photo by nic chi. taken from Unsplash.com"
+         id="home"
+         th:style="'background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(\'' + @{/images/dark-bg.jpg} + '\'); background-size: cover; background-position: center center;'">
+    <div class="container">
+        <div class="row  py-100 align-items-center justify-content-center">
+
+
+            <div class="col-lg-7 text-center py-5 text-center">
+
+                <h5 class="head-title py-4">Add a new article</h5>
+
+                <span class="wrap"></span>
+            </div><!--end col-->
+        </div><!--end row-->
+    </div><!-- end container -->
+</section>
+
 <div class="container mt-5 mb-5">
-    <h1>Add a new article</h1>
+
     <form enctype="multipart/form-data" action="/blog/add" method="post">
         <input type="text" name="title" placeholder="Your title" class="form-control"><br>
         <input type="text" name="anons" placeholder="Insert anons for your article" class="form-control"><br>

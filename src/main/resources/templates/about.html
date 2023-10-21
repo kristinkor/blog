@@ -3,57 +3,42 @@
 
 <div th:replace="fragments/fragments::head"/>
 <body>
-<div th:replace="fragments/fragments :: navbar"></div>
-
-<section class="hero-one position-relative main-bg" alt="Abstract photo by Pawel Czerwinski. taken from Unsplash.com"
-         id="home"
-         th:style="'background-image: url(\'' + @{/images/main-bg.jpg} + '\'); background-size: cover; background-position: center center;'">
-    <div class="container">
-        <div class="row align-items-center justify-content-center">
-
-            <div class="col-lg-5  mx-auto mt-5">
-                <img th:src="@{/images/1.png}" alt="Profile picture" class="img-fluid ml-lg-5" />
-            </div><!--end col-->
-            <div class="col-lg-7 text-center px-0 px-xl-4 mt-5 mt-lg-0 pt-5 pt-lg-0">
-                <h5 class="d-inline-block py-1 px-3 rounded text-muted font-secondary">Hi, I'm Kristina
-                    Korzhenevskaya</h5>
-                <h1 class="hero-title mb-4 font-secondary fo">I'm a freelance
-                    <mark>
-                        <span class="fw-medium typewrite" data-period="2000"
-                              data-type="[&quot;Java&quot;, &quot;Python&quot;, &quot;React&quot;]">
-                            <span class="wrap">Software</span>
-                        </span>
-                    </mark>
-                    Developer
-                </h1>
-                <span class="wrap"></span>
-                <div class="mb-5 mb-lg-0">
-                    <div class="d-inline-block">
-                        <a href="#" class="btn btn-primary">Download CV</a>
-                    </div>
-                </div>
-            </div><!--end col-->
-        </div><!--end row-->
-    </div><!-- end container -->
-</section>
-
-<div th:replace="sections/resume :: resume"></div>
-<div th:replace="sections/project :: project"></div>
-<div th:replace="sections/education :: education"></div>
-<div th:replace="sections/contact-form :: contact"></div>
+<div class="nav-bar-light">
+    <div th:replace="fragments/fragments :: navbar"></div>
 
 
-<div th:replace="sections/blog :: blog"></div>
 
-<div th:replace="fragments/fragments :: footerlg"></div>
-<div th:replace="fragments/fragments :: footersm"></div>
+    <section class="hero-one position-relative dark-bg" alt="Stars night photo by nic chi. taken from Unsplash.com"
+             id="home"
+             th:style="'background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(\'' + @{/images/dark-bg.jpg} + '\'); background-size: cover; background-position: center center;'">
+        <div class="container">
+            <div class="row  py-100 align-items-center justify-content-center">
 
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/feather.js"></script>
-<script src="js/shuffle.min.js"></script>
-<script src="js/projects.init.js"></script>
-<script src="js/typed.js"></script>
-<script src="js/app.js"></script>
 
+                <div class="col-lg-7 text-center py-5 text-center">
+
+                    <h5 class="head-title py-4">I'm all about tech and creating awesome things!</h5>
+                    <p class="text-white">
+                        I use the latest tools like ReactJS, Node + Express, SQL, C#, HTML, CSS, and JavaScript to build secure online stores, robust databases, and user-friendly websites.
+                        My secret? Staying up-to-date with the latest tech to bring your projects to life! Here are some projects that I've made.
+                    </p>
+
+                    <span class="wrap"></span>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!-- end container -->
+    </section>
+    <div th:replace="sections/resume :: resume"></div>
+
+    <div th:replace="fragments/fragments :: footerlg"></div>
+    <div th:replace="fragments/fragments :: footersm"></div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/feather.js"></script>
+    <script src="js/shuffle.min.js"></script>
+    <script src="js/projects.init.js"></script>
+    <script src="js/typed.js"></script>
+    <script src="js/app.js"></script>
+</div>
 </body>
 </html>
