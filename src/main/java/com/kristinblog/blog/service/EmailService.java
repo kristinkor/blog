@@ -40,12 +40,14 @@ public class EmailService {
 				mimeMessage.setSubject(contactFormDTO.getSubject());
 				
 				MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
-				
+				helper.setTo("kristinkor@gmail.com");
 				helper.setText(
 							"<html>"
 								+	"<body>" 
 									+	"Email sent by: " + contactFormDTO.getName() + "<br/>"
-									+   "Email address: " + contactFormDTO.getEmail()
+									+   "Email address: " + contactFormDTO.getEmail()+ "<br/>"
+									+   "Subject: " + contactFormDTO.getSubject()+ "<br/>"
+									+	"Number: " + contactFormDTO.getNumber()+ "<br/>"
 									+   "<br/><br/>"
 									+   contactFormDTO.getMessage()
 								+   "</body>"
@@ -55,6 +57,7 @@ public class EmailService {
 		
 		try {
 			emailSender.send(preparator);
+			System.out.println("success?");
 			logger.info("Email sent with success.");
 		} catch (Exception e) {
 			logger.error("Error sending email.");

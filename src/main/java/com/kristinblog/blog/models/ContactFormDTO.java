@@ -4,6 +4,7 @@ public class ContactFormDTO {
 
 	private String name;
 	private String email;
+	private String number;
 	private String subject;
 	private String message;
 	
@@ -11,12 +12,21 @@ public class ContactFormDTO {
 		super();
 	}
 
-	public ContactFormDTO(String name, String email, String subject, String message) {
+	public ContactFormDTO(String name, String email, String number, String subject, String message) {
 		super();
 		this.name = name;
 		this.email = email;
+		this.number = number;
 		this.subject = subject;
 		this.message = message;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
 	}
 
 	public String getName() {

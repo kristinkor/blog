@@ -18,7 +18,7 @@ public class ContactController {
 	@Autowired
 	private EmailService emailService;
 	
-	@PostMapping("/sendEmail")
+	@PostMapping("/send")
 	public ResponseEntity<?> sendEmail(@RequestBody ContactFormDTO contactFormDTO) {
 		
 		emailService.send(contactFormDTO);
