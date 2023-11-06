@@ -1,5 +1,6 @@
 package com.kristinblog.blog;
 
+import com.kristinblog.blog.models.Project;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

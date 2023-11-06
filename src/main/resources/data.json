@@ -1,0 +1,36 @@
+[
+  {
+    "title": "Pina.by",
+    "description": "Animal Fundraising Project",
+    "imageUrl": "https://xn--80appg.xn--90ais/images/logo-black.svg",
+    "projectLink": "https://xn--80appg.xn--90ais/",
+    "logos": [
+      {
+        "name": "React",
+        "url": "/images/logos/react-logo.png"
+      }
+    ],
+    "badges": [
+      "React",
+      "JavaScript",
+      "CSS"
+    ]
+  },
+  {
+    "title": "Project 2",
+    "description": "My Portfolio Project",
+    "imageUrl": "/images/512x512.png",
+    "projectLink": "/",
+    "logos": [
+      {
+        "name": "Java",
+        "url": "https://example.com/logos/angular.svg"
+      }
+    ],
+    "badges": [
+      "Java",
+      "Spring Boot",
+      "Thymeleaf"
+    ]
+  }
+]
