@@ -16,7 +16,7 @@
           <img th:src="@{/images/article1.jpg}" alt="Abstract nets data" class="img-fluid rounded-top">
           <div class="card-body">
 
-            <a href="blog-detail.html" class="fs-20 my-0 d-block fw-medium" ><p th:text="${article.title}"></p></a>
+            <a th:href="@{/blog/{id}(id=${article.id})}" class="fs-20 my-0 d-block fw-medium" ><p th:text="${article.title}"></p></a>
             <p th:text="${article.anons}"></p>
             <hr class="hr-dashed">
             <div class="d-flex justify-content-between">

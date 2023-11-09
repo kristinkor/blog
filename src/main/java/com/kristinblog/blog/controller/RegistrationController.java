@@ -2,7 +2,7 @@ package com.kristinblog.blog.controller;
 
 import com.kristinblog.blog.models.Role;
 import com.kristinblog.blog.models.User;
-import com.kristinblog.blog.repo.UserRepository;
+import com.kristinblog.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

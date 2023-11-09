@@ -32,6 +32,8 @@
         <input type="text" name="title" placeholder="Your title" class="form-control"><br>
         <input type="text" name="anons" placeholder="Insert anons for your article" class="form-control"><br>
         <input type="text" name="tag" placeholder="Insert tags for your article" class="form-control"><br>
+        <input type="text" name="photoLink" placeholder="Insert link to the photo for your article" class="form-control"><br>
+        <input type="text" name="videoLink" placeholder="Insert link to the video for your article" class="form-control"><br>
         <input type="hidden" name="_csrf" th:value="${_csrf.token}">
         <textarea name="fullText" placeholder="Type your article here" class="form-control"></textarea><br>
         <button type="submit" class="btn btn-success">Add an article</button>

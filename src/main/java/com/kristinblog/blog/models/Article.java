@@ -9,7 +9,21 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String title, anons, fullText, tag;
+    private String title;
+    private String anons;
+    private String fullText;
+    private String tag;
+    private String photoLink;
+
+    public String getVideoLink() {
+        return videoLink;
+    }
+
+    public void setVideoLink(String videoLink) {
+        this.videoLink = videoLink;
+    }
+
+    private String videoLink;
     private int views;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -35,6 +49,13 @@ public class Article {
         this.tag = tag;
     }
 
+    public String getPhotoLink() {
+        return photoLink;
+    }
+
+    public void setPhotoLink(String photoLink) {
+        this.photoLink = photoLink;
+    }
 
     public Long getId() {
         return id;
@@ -43,12 +64,14 @@ public class Article {
     public Article() {
     }
 
-    public Article(String title, String anons, String fullText, String tag, User user) {
+    public Article(String title, String anons, String fullText, String photoLink, String tag, String videoLink, User user) {
+        this.photoLink = photoLink;
         this.title = title;
         this.anons = anons;
         this.fullText = fullText;
         this.tag = tag;
         this.author = user;
+        this.videoLink = videoLink;
     }
 
     public void setId(Long id) {

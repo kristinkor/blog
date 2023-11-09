@@ -17,8 +17,8 @@
     ]
   },
   {
-    "title": "Project 2",
-    "description": "My Portfolio Project",
+    "title": "Portfolio Project",
+    "description": "This is a Portfolio website made using Java Spring Boot",
     "imageUrl": "/images/512x512.png",
     "projectLink": "/",
     "logos": [
@@ -31,6 +31,41 @@
       "Java",
       "Spring Boot",
       "Thymeleaf"
+    ]
+  },
+  {
+    "title": "EZ Rental POS",
+    "description": "EZRental POS is a car rental management system",
+    "imageUrl": "/images/Ez.png",
+    "projectLink": "https://github.com/kristinkor/EZAutoRentalManagementSystem",
+    "logos": [
+      {
+        "name": "C#",
+        "url": "https://example.com/logos/angular.svg"
+      }
+    ],
+    "badges": [
+      "C#",
+      "SQL"
+    ]
+  },
+  {
+    "title": "iWardrobe",
+    "description": "iWardrobe is a dynamic, fashion-centric social network",
+    "imageUrl": "/images/iWardrobe.png",
+    "projectLink": "https://github.com/kristinkor/EZAutoRentalManagementSystem",
+    "logos": [
+      {
+        "name": "React",
+        "url": "https://example.com/logos/angular.svg"
+      }
+    ],
+    "badges": [
+      "React",
+      "Node.js",
+      "sequelize.js",
+      "PostgreSQL",
+      "Bootstrap"
     ]
   }
 ]

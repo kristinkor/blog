@@ -1,4 +1,4 @@
-package com.kristinblog.blog.repo;
+package com.kristinblog.blog.repository;
 
 import com.kristinblog.blog.models.Article;
 import org.springframework.data.repository.CrudRepository;

@@ -1,7 +1,7 @@
 package com.kristinblog.blog.service;
 
 import com.kristinblog.blog.models.User;
-import com.kristinblog.blog.repo.UserRepository;
+import com.kristinblog.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

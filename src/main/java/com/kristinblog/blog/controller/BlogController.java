@@ -2,7 +2,7 @@ package com.kristinblog.blog.controller;
 
 import com.kristinblog.blog.models.Article;
 import com.kristinblog.blog.models.User;
-import com.kristinblog.blog.repo.ArticleRepository;
+import com.kristinblog.blog.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -42,12 +42,12 @@ public class BlogController {
     }
 
     @PostMapping("/blog/add")
-    public String blogArticleAdd(@AuthenticationPrincipal User user, @RequestParam String title, @RequestParam String anons, @RequestParam String fullText, @RequestParam String tag, Map<String, Object> model) {
-        Article article = new Article(title, anons, fullText, tag, user);
+    public String blogArticleAdd(@AuthenticationPrincipal User user, @RequestParam String title, @RequestParam String anons, @RequestParam String photoLink,  @RequestParam String videoLink, @RequestParam String fullText, @RequestParam String tag, Map<String, Object> model) {
+        Article article = new Article(title, anons, fullText,photoLink, tag, videoLink, user);
         articleRepository.save(article);
         Iterable<Article> articles = articleRepository.findAll();
         model.put("articles", articles);
-        return "redirect:/blog-main";
+        return "redirect:/blog";
     }
 
     @GetMapping("/blog/{id}")
@@ -59,7 +59,7 @@ public class BlogController {
         ArrayList<Article> result = new ArrayList<>();
         article.ifPresent(result::add);
         model.addAttribute("article", result);
-        return "blog-details";
+        return "article";
     }
 
 
@@ -76,12 +76,14 @@ public class BlogController {
     }
 
     @PostMapping("/blog/{id}/edit")
-    public String blogArticleUpdate(@PathVariable(value = "id") long articleId, @RequestParam String title, @RequestParam String anons, @RequestParam String fullText, @RequestParam String tag, Model model) {
+    public String blogArticleUpdate(@PathVariable(value = "id") long articleId, @RequestParam String title, @RequestParam String anons, @RequestParam String photoLink, @RequestParam String videoLink, @RequestParam String fullText, @RequestParam String tag, Model model) {
         Article article = articleRepository.findById(articleId).orElseThrow();
         article.setTitle(title);
         article.setTitle(anons);
         article.setTag(tag);
         article.setTitle(fullText);
+        article.setTitle(photoLink);
+        article.setTitle(videoLink);
         articleRepository.save(article);
         return "redirect:/blog-main";
     }
