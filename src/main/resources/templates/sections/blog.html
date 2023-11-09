@@ -13,7 +13,7 @@
 
       <div class="col-lg-4 col-md-6" th:each="article : ${articles}" >
         <div class="card shadow">
-          <img th:src="@{/images/article1.jpg}" alt="Abstract nets data" class="img-fluid rounded-top">
+          <img th:src="${article.photoLink}" alt="Abstract nets data" class="img-fluid rounded-top">
           <div class="card-body">
 
             <a th:href="@{/blog/{id}(id=${article.id})}" class="fs-20 my-0 d-block fw-medium" ><p th:text="${article.title}"></p></a>

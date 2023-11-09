@@ -43,7 +43,7 @@ public class BlogController {
 
     @PostMapping("/blog/add")
     public String blogArticleAdd(@AuthenticationPrincipal User user, @RequestParam String title, @RequestParam String anons, @RequestParam String photoLink,  @RequestParam String videoLink, @RequestParam String fullText, @RequestParam String tag, Map<String, Object> model) {
-        Article article = new Article(title, anons, fullText,photoLink, tag, videoLink, user);
+        Article article = new Article(title, anons, fullText, photoLink, tag, videoLink, user);
         articleRepository.save(article);
         Iterable<Article> articles = articleRepository.findAll();
         model.put("articles", articles);
