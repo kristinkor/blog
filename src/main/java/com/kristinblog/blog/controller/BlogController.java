@@ -23,6 +23,7 @@ public class BlogController {
 
     @GetMapping("/blog")
     public String blogMain(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
+        System.out.println("Filter value: " + filter);
         Iterable<Article> articles = articleRepository.findAll();
         if (filter != null && !filter.isEmpty()) {
             articles = articleRepository.findByTag(filter);
