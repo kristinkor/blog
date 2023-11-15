@@ -31,7 +31,8 @@
     <form enctype="multipart/form-data" action="/blog/add" method="post">
         <input type="text" name="title" placeholder="Your title" class="form-control"><br>
         <input type="text" name="anons" placeholder="Insert anons for your article" class="form-control"><br>
-        <input type="text" name="tag" placeholder="Insert tags for your article" class="form-control"><br>
+        <input  type="text" id="hashtags" autocomplete="off" name="tag" placeholder="Insert tags for your article & click enter." class="form-control"><br>
+        <div class="tag-container"></div>
         <input type="text" name="photoLink" placeholder="Insert link to the photo for your article" class="form-control"><br>
         <input type="text" name="videoLink" placeholder="Insert link to the video for your article" class="form-control"><br>
         <input type="hidden" name="_csrf" th:value="${_csrf.token}">
@@ -49,6 +50,41 @@
 <script src="/js/projects.init.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/app.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let form = document.querySelector('form');
+        let input = document.querySelector('#hashtags');
+        let container = document.querySelector('.tag-container');
+
+        input.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent the default behavior (form submission)
+
+                if (input.value.trim().length > 0) {
+                    var text = document.createTextNode(input.value);
+                    var p = document.createElement('p');
+                    container.appendChild(p);
+                    p.appendChild(text);
+                    p.classList.add('tag');
+                    input.value = '';
+
+                    let deleteTags = document.querySelectorAll('.tag');
+
+                    for (let i = 0; i < deleteTags.length; i++) {
+                        deleteTags[i].addEventListener('click', function() {
+                            container.removeChild(deleteTags[i]);
+                        });
+                    }
+                }
+            }
+        });
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            // Handle the form submission if needed
+        });
+    });
+</script>
 
 </body>
 </html>

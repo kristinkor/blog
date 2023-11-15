@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 
@@ -26,7 +27,7 @@ public class BlogController {
         System.out.println("Filter value: " + filter);
         Iterable<Article> articles = articleRepository.findAll();
         if (filter != null && !filter.isEmpty()) {
-            articles = articleRepository.findByTag(filter);
+            articles = articleRepository.findByTagsIn(Collections.singletonList(filter));
         } else {
             articles = articleRepository.findAll();
         }
@@ -43,8 +44,8 @@ public class BlogController {
     }
 
     @PostMapping("/blog/add")
-    public String blogArticleAdd(@AuthenticationPrincipal User user, @RequestParam String title, @RequestParam String anons, @RequestParam String photoLink,  @RequestParam String videoLink, @RequestParam String fullText, @RequestParam String tag, Map<String, Object> model) {
-        Article article = new Article(title, anons, fullText, photoLink, tag, videoLink, user);
+    public String blogArticleAdd(@AuthenticationPrincipal User user, @RequestParam String title, @RequestParam String anons, @RequestParam String photoLink, @RequestParam ArrayList<String> tags, @RequestParam String videoLink, @RequestParam String fullText, @RequestParam String tag, Map<String, Object> model) {
+        Article article = new Article(title, anons, fullText, photoLink, tags, videoLink, user);
         articleRepository.save(article);
         Iterable<Article> articles = articleRepository.findAll();
         model.put("articles", articles);
@@ -77,14 +78,15 @@ public class BlogController {
     }
 
     @PostMapping("/blog/{id}/edit")
-    public String blogArticleUpdate(@PathVariable(value = "id") long articleId, @RequestParam String title, @RequestParam String anons, @RequestParam String photoLink, @RequestParam String videoLink, @RequestParam String fullText, @RequestParam String tag, Model model) {
+    public String blogArticleUpdate(@PathVariable(value = "id") long articleId, @RequestParam String title, @RequestParam String anons, @RequestParam String photoLink, @RequestParam ArrayList<String> tags, @RequestParam String videoLink, @RequestParam String fullText, @RequestParam String tag, Model model) {
         Article article = articleRepository.findById(articleId).orElseThrow();
         article.setTitle(title);
         article.setTitle(anons);
-        article.setTag(tag);
+        article.setTags(tags);
         article.setTitle(fullText);
         article.setTitle(photoLink);
         article.setTitle(videoLink);
+        article.setTags(tags);
         articleRepository.save(article);
         return "redirect:/blog-main";
     }

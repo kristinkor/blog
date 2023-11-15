@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
-    List<Article> findByTag(String tag);
+    List<Article> findByTagsIn(List<String> tags);
     @Query(value = "SELECT * FROM blogs b "
             + "WHERE UPPER(CONCAT(b.title, ' ', b.description, ' ', b.body)) LIKE CONCAT('%',UPPER(:search),'%')", nativeQuery = true)
     public Page<Article> findAllWithPagination(Pageable pageable, @Param("search") String search);

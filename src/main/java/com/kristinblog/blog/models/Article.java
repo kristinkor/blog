@@ -1,6 +1,8 @@
 package com.kristinblog.blog.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Article {
@@ -12,11 +14,22 @@ public class Article {
     private String title;
     private String anons;
     private String fullText;
-    private String tag;
+
+    @ElementCollection
+    private List<String> tags;
+
     private String photoLink;
 
     public String getVideoLink() {
         return videoLink;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
     }
 
     public void setVideoLink(String videoLink) {
@@ -30,23 +43,16 @@ public class Article {
     @JoinColumn(name = "user_id")
     private User author;
 
-    public String getAuthorName(){
+    public String getAuthorName() {
         return author != null ? author.getUsername() : "No author";
     }
+
     public User getAuthor() {
         return author;
     }
 
     public void setAuthor(User author) {
         this.author = author;
-    }
-
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
     }
 
     public String getPhotoLink() {
@@ -64,12 +70,12 @@ public class Article {
     public Article() {
     }
 
-    public Article(String title, String anons, String fullText, String photoLink, String tag, String videoLink, User user) {
+    public Article(String title, String anons, String fullText, String photoLink, ArrayList<String> tags, String videoLink, User user) {
         this.photoLink = photoLink;
         this.title = title;
         this.anons = anons;
         this.fullText = fullText;
-        this.tag = tag;
+        this.tags = tags;
         this.author = user;
         this.videoLink = videoLink;
     }
